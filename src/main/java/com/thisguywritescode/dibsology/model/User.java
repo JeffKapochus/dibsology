@@ -3,18 +3,23 @@ package com.thisguywritescode.dibsology.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Component
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     
     @Id
@@ -31,7 +36,9 @@ public class User {
     @Column(name = "hashed_password")
     private String hashed_password;
     
-    @OneToMany(mappedBy="submission")
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    @JsonIgnoreProperties("user")
     private List<Submission> submissions;
     
     @Column(name = "created_at")
@@ -39,22 +46,6 @@ public class User {
     
     @Column(name = "updated_at")
     private Date updated_at;
-    
-    public User() {
-        this.name = "temp name";
-        this.email = "temp email";
-        this.submissions = new ArrayList<Submission>();
-        this.created_at = new Date();
-        this.updated_at = new Date();
-    }
-    
-    public User(final String nameIn, final String emailIn) {
-        this.name = nameIn;
-        this.email = emailIn;
-        this.submissions = new ArrayList<Submission>();
-        this.created_at = new Date();
-        this.updated_at = new Date();
-    }
     
     public String getName() {
         return name;

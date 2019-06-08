@@ -9,5 +9,5 @@ import com.thisguywritescode.dibsology.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     
-    User findBySubmission(Submission submission) throws DataAccessException;
+    //User findBySubmission(Submission submission) throws DataAccessException;
 }

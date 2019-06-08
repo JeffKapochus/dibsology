@@ -11,9 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Component
 @Entity
-@Table(name = "game")
+@Table(name = "submissions")
 public class Submission {
     
     @Id
@@ -24,11 +26,12 @@ public class Submission {
     @Column(name = "title")
     private String title;
     
-    @Column(name = "text")
+    @Column(name = "description")
     private String text;
     
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
+    @JsonIgnoreProperties("submissions")
     private User user;
     
     @Column(name = "created_at")
@@ -36,22 +39,6 @@ public class Submission {
     
     @Column(name = "updated_at")
     private Date updated_at;
-    
-    public Submission() {
-        this.title = "temp title";
-        this.text = "temp text";
-        this.user = new User();
-        this.created_at = new Date();
-        this.updated_at = new Date();
-    }
-    
-    public Submission(final String titleIn, final String textIn, final User userIn) {
-        this.title = titleIn;
-        this.text = textIn;
-        this.user = userIn;
-        this.created_at = new Date();
-        this.updated_at = new Date();
-    }
     
     public String getTitle() {
         return title;
