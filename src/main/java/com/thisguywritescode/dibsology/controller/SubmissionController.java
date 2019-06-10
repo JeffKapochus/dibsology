@@ -19,7 +19,7 @@ public class SubmissionController {
 	@Autowired
 	SubmissionService submissionService;
 	
-	@GetMapping(value = "/submission/")
+	@GetMapping(value = "/submission")
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<List<Submission>> getSubmissions() {
         List<Submission> subList = null;
