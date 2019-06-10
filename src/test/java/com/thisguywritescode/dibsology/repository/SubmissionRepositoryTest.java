@@ -33,13 +33,11 @@ public class SubmissionRepositoryTest {
 	private Submission submission;
 	private User user;
 
-	private int SUBMISSION_ID = 0;
 	private int USER_ID = 0;
 	private List<Submission> resultList;
 
 	@Before
 	public void setUp() {
-		entityManager.flush();
 		user = new User();
 		submission = new Submission();
 		entityManager.persist(user);
@@ -47,7 +45,6 @@ public class SubmissionRepositoryTest {
 
 		resultList = new ArrayList<Submission>();
 
-		SUBMISSION_ID = submission.getId();
 		USER_ID = user.getId();
 	}
 
@@ -81,7 +78,6 @@ public class SubmissionRepositoryTest {
 
 	@Test
 	public void findByUserId_returnsEmptyList_whenDatabaseContainsNoMatches() {
-		entityManager.clear();
 		resultList = new ArrayList<Submission>();
 
 		List<Submission> result = submissionRepository.findByUserId(USER_ID);

@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.thisguywritescode.dibsology.model.Submission;
-import com.thisguywritescode.dibsology.repository.SubmissionRepository;
+import com.thisguywritescode.dibsology.service.SubmissionService;
 
 @Component
 @Controller("submissionController")
 public class SubmissionController {
 
 	@Autowired
-	SubmissionRepository submissionRepository;
+	SubmissionService submissionService;
 
-	@GetMapping(value = "/thisistheREALtest/{id}")
+	@GetMapping(value = "/submission/{id}")
 	@CrossOrigin(origins = "http://localhost:3000")
-	public ResponseEntity<Submission> test3(@PathVariable("id") int id) {
+	public ResponseEntity<Submission> getSubmissionById(@PathVariable("id") int id) {
 		Submission sub = null;
 		HttpStatus status = HttpStatus.OK;
 		try {
-			sub = submissionRepository.getOne(id);
+			sub = submissionService.getSubmissionById(id);
 		} catch (Exception e) {
 			System.out.println(e);
 			status = HttpStatus.INTERNAL_SERVER_ERROR;

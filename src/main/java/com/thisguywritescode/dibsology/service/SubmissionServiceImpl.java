@@ -18,8 +18,13 @@ public class SubmissionServiceImpl implements SubmissionService {
 	SubmissionRepository submissionRepository;
 
 	@Override
-	public Optional<Submission> getSubmissionById(int id) {
-		return submissionRepository.findById(id);
+	public Submission getSubmissionById(int id) {
+		Submission sub = null;
+		Optional<Submission> tempSub = submissionRepository.findById(id);
+		if (tempSub.isPresent()) {
+			sub = tempSub.get();
+		}
+		return sub;
 	}
 
 	@Override
