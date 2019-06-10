@@ -4,18 +4,15 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.doReturn;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import com.thisguywritescode.dibsology.model.Submission;
 import com.thisguywritescode.dibsology.repository.SubmissionRepository;
 
@@ -31,8 +28,8 @@ public class SubmissionServiceImplTest {
 	@Mock
 	Submission mockSubmission;
 
-	private int VALID_SUBMISSION_ID = 1;
-	private int VALID_USER_ID = 1;
+	private final int VALID_SUBMISSION_ID = 1;
+	private final int VALID_USER_ID = 1;
 	private List<Submission> VALID_SUBMISSION_LIST;
 	private List<Submission> EMPTY_SUBMISSION_LIST;
 
@@ -64,6 +61,13 @@ public class SubmissionServiceImplTest {
 	public void getAllSubmissions_returnsValidSubmissionList_byDefault() {
 		assertThat(submissionService.getAllSubmissions(), is(VALID_SUBMISSION_LIST));
 	}
+	
+	@Test
+    public void getAllSubmissions_returnsEmptyList_whenNoSubmissionsAreFound() {
+	    doReturn(EMPTY_SUBMISSION_LIST).when(mockSubmissionRepository).findAll();
+	    
+        assertThat(submissionService.getAllSubmissions(), is(EMPTY_SUBMISSION_LIST));
+    }
 
 	@Test
 	public void getSubmissionsByUserId_returnsValidSubmissionList_whenGivenValidUserId() {

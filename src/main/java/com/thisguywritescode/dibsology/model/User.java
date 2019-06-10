@@ -2,7 +2,6 @@ package com.thisguywritescode.dibsology.model;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.springframework.stereotype.Component;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Component
@@ -32,9 +29,6 @@ public class User {
 
 	@Column(name = "email")
 	private String email;
-
-	@Column(name = "hashed_password")
-	private String hashed_password;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
@@ -65,14 +59,6 @@ public class User {
 
 	public void setEmail(final String email) {
 		this.email = email;
-	}
-
-	public String getHashed_password() {
-		return hashed_password;
-	}
-
-	public void setHashed_password(final String hashed_password) {
-		this.hashed_password = hashed_password;
 	}
 
 	public List<Submission> getSubmissions() {
