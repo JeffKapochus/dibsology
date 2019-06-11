@@ -1,7 +1,6 @@
 import React from "react";
+import * as Constants from "../../Utils/Constants";
 
-const STATUS_OK = 200;
-const submissionUrl = "http://localhost:8080/submission/";
 export class SubmissionPage extends React.Component {
     constructor(props) {
         super(props);
@@ -14,8 +13,10 @@ export class SubmissionPage extends React.Component {
 
     componentDidMount() {
         this.fetchAndProcessData(
-            submissionUrl + this.props.match.params.id,
-            "GET"
+            Constants.APP_URL +
+                Constants.SUBMISSION_URL +
+                this.props.match.params.id,
+            Constants.HTTP_GET
         );
     }
 
@@ -34,7 +35,7 @@ export class SubmissionPage extends React.Component {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             });
-            if (response.status !== STATUS_OK) {
+            if (response.status !== Constants.STATUS_OK) {
                 throw response;
             }
             response = await response.json();
@@ -43,7 +44,7 @@ export class SubmissionPage extends React.Component {
                 user: response.user,
             });
         } catch (error) {
-            //return error.status;
+            return error.status;
         }
     }
 

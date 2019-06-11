@@ -1,9 +1,9 @@
 import React from "react";
 import "./Submission-List.css";
+import * as Constants from "../../Utils/Constants";
 
 import { SubmissionPreview } from "../Submission-Preview/Submission-Preview";
 
-const STATUS_OK = 200;
 export class SubmissionList extends React.Component {
     constructor(props) {
         super(props);
@@ -15,7 +15,10 @@ export class SubmissionList extends React.Component {
         this.fetchAndProcessData = this.fetchAndProcessData.bind(this);
     }
     componentDidMount() {
-        this.fetchAndProcessData("http://localhost:8080/submission", "GET");
+        this.fetchAndProcessData(
+            Constants.APP_URL + Constants.SUBMISSION_LIST_URL,
+            Constants.HTTP_GET
+        );
     }
 
     async fetchAndProcessData(
@@ -33,7 +36,7 @@ export class SubmissionList extends React.Component {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             });
-            if (response.status !== STATUS_OK) {
+            if (response.status !== Constants.STATUS_OK) {
                 throw response;
             }
             response = await response.json();
@@ -41,7 +44,7 @@ export class SubmissionList extends React.Component {
                 submissions: response,
             });
         } catch (error) {
-            //return error.status;
+            return error.status;
         }
     }
 
