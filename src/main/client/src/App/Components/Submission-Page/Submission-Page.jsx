@@ -1,4 +1,5 @@
 import React from "react";
+import './Submission-Page.css';
 import * as Constants from "../../Utils/Constants";
 
 export class SubmissionPage extends React.Component {

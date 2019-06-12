@@ -1,0 +1,62 @@
+.submissionPreview a{
+    text-decoration: none;
+}
+.submissionPreview{
+    background-color: #E6E5E9;
+    color: #16171F;
+    width:20vw;
+    height:20vw;
+    max-height:330px;
+    min-height:200px;
+    min-width: 296px;
+    max-width:416px;
+    border-radius:7px;
+    padding:1em;
+}
+.submissionPreviewTitle{
+    color: #0F52BA;
+    font-size:1.3vw;
+    font-weight: bold;
+    height:48%;
+}
+.submissionPreviewText{
+    font-size: 0.9vw;
+    height:48%;
+}
+.submissionPreviewUserInfo{
+    font-size:0.6vw;
+    height: 4%;
+}
+@media only screen and (max-width: 1000px) {
+    .submissionPreviewTitle{
+        font-size:1.7vw;
+    }
+    .submissionPreviewText{
+        font-size: 1.2vw;
+    }
+    .submissionPreviewUserInfo{
+        font-size:1.1vw;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .submissionPreviewTitle{
+        font-size:2.4vw;
+    }
+    .submissionPreviewText{
+        font-size: 1.8vw;
+    }
+    .submissionPreviewUserInfo{
+        font-size:1.4vw;
+    }
+}
+@media only screen and (min-width: 1920px) {
+    .submissionPreviewTitle {
+        font-size:25px;
+    }
+    .submissionPreviewText{
+        font-size: 17.2px;
+    }
+    .submissionPreviewUserInfo{
+        font-size: 11.3px;
+    }
+  }

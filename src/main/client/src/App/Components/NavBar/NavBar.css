@@ -1,23 +1,46 @@
-#navBar {
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: blue;
-    color: white;
+#navBar{
+    position:absolute;
+    top:0;
+    background-color: #0F52BA;
+    border-radius:15px 0px 0px 15px;
 }
-#navBar ul {
+#navBar.expanded{
+    right:0;
+    -webkit-transition: .2s; /* Safari */
+    transition: .2s;
+}
+#navBar.unexpanded{
+    right:-26vw;
+    -webkit-transition: .2s; /* Safari */
+    transition: .2s;
+}
+#navBar ul{
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    padding-left:0;
+    margin:0;
 }
-#navBar ul li {
-    display: inline;
-    padding: 1em;
+#navBar ul li{
+    display:inline-block;
+    padding: 1em 1em;
 }
-#navBar ul li a {
-    color: white;
+#navBar ul li a,
+#navBar ul li fa-icon{
+    color: #ECE2D0;
     text-decoration: none;
+    padding: 0.8em 1em;
+    font-size: 1.2vw;
+    font-weight:bold;
+    -webkit-transition: .2s; /* Safari */
+    transition: .2s;
 }
-#navBar ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.33);
+#navBar ul li a:hover{
+    background-color: rgba(255,255,255,0.1);
+    -webkit-transition: .2s; /* Safari */
+    transition: .2s;
+}
+#navBar ul li:last-child{
+    margin-right:1em;
+}
+#navBar ul li:first-child{
+    margin-left:1em;
 }
