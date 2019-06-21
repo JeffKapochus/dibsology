@@ -42,15 +42,15 @@ public class UserTest {
 	}
 
 	@Test
-	public void userSetCreated_at_appropriatelySetsCreated_at() {
-		user.setCreated_at(VALID_DATE);
-		assertThat(user.getCreated_at(), is(VALID_DATE));
+	public void userSetCreatedAt_appropriatelySetsCreatedAt() {
+		user.setCreatedAt(VALID_DATE);
+		assertThat(user.getCreatedAt(), is(VALID_DATE));
 	}
 
 	@Test
-	public void userSetUpdated_at_appropriatelySetsUpdated_at() {
-		user.setUpdated_at(VALID_DATE);
-		assertThat(user.getUpdated_at(), is(VALID_DATE));
+	public void userSetUpdatedAt_appropriatelySetsUpdatedAt() {
+		user.setUpdatedAt(VALID_DATE);
+		assertThat(user.getUpdatedAt(), is(VALID_DATE));
 	}
 
 	@Test

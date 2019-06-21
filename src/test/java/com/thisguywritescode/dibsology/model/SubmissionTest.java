@@ -2,22 +2,26 @@ package com.thisguywritescode.dibsology.model;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
 public class SubmissionTest {
 
-	private String VALID_STRING = "test string";
-	private User VALID_USER = new User();
+	private final String VALID_STRING = "test string";
+	private final User VALID_USER = new User();
 	private Submission submission;
-	private Date VALID_DATE = new Date();
+	private final Date VALID_DATE = new Date();
+	private List<Party> VALID_PARTIES_LIST;
 
 	@Before
 	public void SetUp() {
 		submission = new Submission();
+		
+		VALID_PARTIES_LIST = new ArrayList<Party>();
+		VALID_PARTIES_LIST.add(new Party());
 	}
 
 	@Test
@@ -36,23 +40,29 @@ public class SubmissionTest {
 		submission.setText(VALID_STRING);
 		assertThat(submission.getText(), is(VALID_STRING));
 	}
-
-	@Test
-	public void submissionSetCreated_at_appropriatelySetsCreated_at() {
-		submission.setCreated_at(VALID_DATE);
-		assertThat(submission.getCreated_at(), is(VALID_DATE));
-	}
-
-	@Test
-	public void submissionSetUpdated_at_appropriatelySetsUpdated_at() {
-		submission.setUpdated_at(VALID_DATE);
-		assertThat(submission.getUpdated_at(), is(VALID_DATE));
-	}
-
+	
 	@Test
 	public void submissionSetUser_appropriatelySetsUser() {
-		submission.setUser(VALID_USER);
-		assertThat(submission.getUser(), is(VALID_USER));
+	    submission.setUser(VALID_USER);
+	    assertThat(submission.getUser(), is(VALID_USER));
+	}
+	
+	@Test
+	public void submissionSetParties_appropriatelySetsParties() {
+	    submission.setParties(VALID_PARTIES_LIST);
+	    assertThat(submission.getParties(), is(VALID_PARTIES_LIST));
+	}
+
+	@Test
+	public void submissionSetCreatedAt_appropriatelySetsCreatedAt() {
+		submission.setCreatedAt(VALID_DATE);
+		assertThat(submission.getCreatedAt(), is(VALID_DATE));
+	}
+
+	@Test
+	public void submissionSetUpdatedAt_appropriatelySetsUpdatedAt() {
+		submission.setUpdatedAt(VALID_DATE);
+		assertThat(submission.getUpdatedAt(), is(VALID_DATE));
 	}
 
 }

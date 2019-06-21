@@ -36,10 +36,10 @@ public class User {
 	private List<Submission> submissions;
 
 	@Column(name = "created_at")
-	private Date created_at;
+	private Date createdAt;
 
 	@Column(name = "updated_at")
-	private Date updated_at;
+	private Date updatedAt;
 
 	public int getId() {
 		return id;
@@ -69,20 +69,20 @@ public class User {
 		this.submissions = submissions;
 	}
 
-	public Date getCreated_at() {
-		return created_at;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreated_at(final Date created_at) {
-		this.created_at = created_at;
+	public void setCreatedAt(final Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	public Date getUpdated_at() {
-		return updated_at;
+	public Date getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdated_at(final Date updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdatedAt(final Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 }
