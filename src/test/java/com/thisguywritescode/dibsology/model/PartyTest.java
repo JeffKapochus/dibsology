@@ -2,7 +2,9 @@ package com.thisguywritescode.dibsology.model;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,10 +14,14 @@ public class PartyTest {
 	private final String VALID_STRING = "test string";
 	private final Date VALID_DATE = new Date();
 	private final Submission VALID_SUBMISSION = new Submission();
+	private List<Vote> VALID_VOTE_LIST;
 
 	@Before
 	public void SetUp() {
 		party = new Party();
+		VALID_VOTE_LIST = new ArrayList<Vote>();
+		
+		VALID_VOTE_LIST.add(new Vote());
 	}
 
 	@Test
@@ -30,10 +36,16 @@ public class PartyTest {
 	}
 	
 	@Test
-	public void userSetSubmissions_appropriatelySetsSubmissions() {
+	public void userSetSubmission_appropriatelySetsSubmission() {
 	    party.setSubmission(VALID_SUBMISSION);
 	    assertThat(party.getSubmission(), is(VALID_SUBMISSION));
 	}
+	
+	@Test
+    public void userSetSVotes_appropriatelySetsVotes() {
+        party.setVotes(VALID_VOTE_LIST);
+        assertThat(party.getVotes(), is(VALID_VOTE_LIST));
+    }
 
 	@Test
 	public void userSetCreatedAt_appropriatelySetsCreatedAt() {

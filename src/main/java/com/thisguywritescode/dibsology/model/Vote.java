@@ -1,7 +1,6 @@
 package com.thisguywritescode.dibsology.model;
 
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,15 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Component
 @Entity
-@Table(name = "parties")
-public class Party {
+@Table(name = "votes")
+public class Vote {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,13 +26,13 @@ public class Party {
 	private String name;
 	
 	@ManyToOne
-    @JoinColumn(name = "submission_id")
-    @JsonIgnoreProperties("parties")
-    private Submission submission;
+    @JoinColumn(name = "user_id")
+    private User user;
 	
-	@OneToMany(mappedBy="party")
-    @JsonIgnoreProperties("party")
-    private List<Vote> votes;
+	@ManyToOne
+    @JoinColumn(name = "party_id")
+    @JsonIgnoreProperties("votes")
+    private Party party;
 	
     @Column(name = "created_at")
     private Date createdAt;
@@ -53,23 +51,23 @@ public class Party {
 	public void setName(final String name) {
 		this.name = name;
 	}
-
-	public Submission getSubmission() {
-		return submission;
-	}
-
-	public void setSubmission(final Submission submission) {
-		this.submission = submission;
+	
+	public Party getParty() {
+	    return party;
 	}
 	
-	public List<Vote> getVotes() {
-        return votes;
+	public void setParty(final Party party) {
+	    this.party = party;
+	}
+    
+    public User getUser() {
+        return user;
     }
-
-    public void setVotes(final List<Vote> votes) {
-        this.votes = votes;
+    
+    public void setUser(final User user) {
+        this.user = user;
     }
-	
+    
     public Date getCreatedAt() {
         return createdAt;
     }
